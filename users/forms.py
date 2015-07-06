@@ -28,6 +28,17 @@ class SignupForm(forms.Form):
 		),
 	)
 
+	middlename = forms.CharField(
+		widget = forms.TextInput(
+			attrs = {
+				'placeholder' : 'Middle Name',
+				'class'       : 'form-control',
+				'id' 				  : 'middle-name',
+				'required'    : 'True',
+			}
+		),
+	)
+
 	lastname = forms.CharField(
 		widget = forms.TextInput(
 			attrs = {
@@ -40,7 +51,7 @@ class SignupForm(forms.Form):
 	)
 
 	# GENDER = [
-	#   ('M', 'Male'),
+	#   ('M', 'Male'),aFi
 	#   ('F', 'Female'),
 	# ]
 
@@ -138,6 +149,28 @@ class SignupForm(forms.Form):
 			}
 		),
 	)
+
+	date_of_birth = forms.DateField(
+    widget = forms.DateInput(
+			attrs = {
+				'class' : 'form-control',
+				'required'    : 'True',
+				'placeholder': 'Date of Birth (Year-month-day)',
+				'datepicker-popup': '{{format}}',
+				'ng-model' : 'dt',
+				'is-open'  : 'opened',
+				'min-date' : 'minDate',
+				'ng-click' : 'open($event)',
+				'max-date' : "maxDate",
+				'datepicker-options' : 'dateoptions',
+				'date-disabled' : 'disabled(date, model)',
+				'ng-required'  : 'true',
+				'close-text' : 'Close',
+				'id' : 'date_of_birth',
+			}
+    ),
+  )
+    
 
 	# date_of_birth = forms.DateField(
 	# 	widget=DateInput()

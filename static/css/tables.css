@@ -1,0 +1,24 @@
+table.character-rate-chart{
+    width: 100%;
+    font-size: 10px;
+}
+
+table.character-rate-chart td{
+    padding: 3px 3px 3px 5px;
+}
+
+
+table.table-bordered-print{
+    width: 100%;
+    font-size: 10px;
+}
+
+table.table-bordered-print th{
+    border: 1px solid;
+    padding: 3px 3px 3px 3px;
+}
+
+table.table-bordered-print td{
+    border: 1px solid;
+    padding: 3px 3px 3px 3px;
+}

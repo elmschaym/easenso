@@ -2,30 +2,27 @@
 {% load humanize %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="app" lang="en">
   <head>
   	
-    <meta charset="utf-8">
+   <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	
-    <title>{% block title %} {{ system_name }}Easenso {% endblock title %}</title>
-    
-		<meta name="description" content="">
-		<meta name="author" content="zhuL">
-		<meta name="viewport" content="width=device-width; initial-scale=1.0">
-	
-		{# <link rel="shortcut icon" href="/static/images/msu_logo.png" /> #}
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="{{STATIC_URL}}images/title_logo.png" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-	
-		{% block css %}
+		<link href="{{STATIC_URL}}components/bootstrap/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" />
+	{% block css %}
 	  	<link rel="stylesheet" href="{% static 'css/style.css' %}" >
 	  {% endblock css %}
+    <title>{% block title %} {{ system_name }}Easenso {% endblock title %}</title>
+    
+	
+		
+		
     
     {% block extra_css %}{% endblock extra_css %}
 
-		{% block script %}
-			<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
-		{% endblock script %}
+		
   </head>
 
 	<body {% block id_body %}{% endblock id_body %}>
@@ -47,11 +44,9 @@
 	
 		{% block footer %}{% endblock footer %}
 	
-		{% block js %}
-			<script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
-		{% endblock js %}
-	
-		{% block extra_js %}{% endblock extra_js %}
+		<script type="text/javascript" src="{{STATIC_URL}}components/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="{{STATIC_URL}}components/jquery-ui/jquery-ui.min.js"></script>
+
+	{% block custom_scripts %}{% endblock custom_scripts %}
 	</body>
 </html>
