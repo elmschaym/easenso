@@ -4,7 +4,7 @@ from django.shortcuts import render_to_response, RequestContext, HttpResponse
 # from django.contrib.auth.decorators import login_required
 
 
-SYSTEM_NAME = 'Easenso'
+SYSTEM_NAME = 'Easenso - Coming Soon!'
 
 def index(request):
   return render_to_response(

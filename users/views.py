@@ -54,7 +54,11 @@ def signup(request):
 				message.attach_alternative(html_content, "text/html")
 				message.send()
 
-				return HttpResponse('You have Successfully registered to the website.')
+				data={
+					'system_name' : 'One More Step!',
+				}
+
+				return render_to_response('success/confirm.html', data,RequestContext(request),)
 			else:
 				return HttpResponse('Oops! sorry, username already exists.')
 		else:
@@ -69,6 +73,12 @@ def confirm_email(request, email):
 	if not user.is_confirmed:
 		user.is_confirmed = True
 		user.save()
-		return HttpResponse('You have successfully confirmed your account.')
+		data={
+			'system_name' : 'Congratulations!',
+		}
+		return render_to_response('success/success.html', data,RequestContext(request),)
 	else:
-		return HttpResponse('You have already confirmed your account.')
+		data={
+			'system_name' : 'You Have Already Confirm!',
+		}
+		return render_to_response('success/already.html', data,RequestContext(request),)

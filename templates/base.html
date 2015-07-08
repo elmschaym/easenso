@@ -8,7 +8,7 @@
    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" href="{{STATIC_URL}}images/title_logo.png" />
+		<link rel="shortcut icon" href="{{STATIC_URL}}images/title_logo.png" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 		<link href="{{STATIC_URL}}components/bootstrap/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" />
 	{% block css %}
@@ -24,29 +24,37 @@
 
 		
   </head>
+  	
 
 	<body {% block id_body %}{% endblock id_body %}>
-	
+		
 		{% block header %}{% endblock header %}
 	
 		{% block carousel %}{% endblock carousel %}	
 	
 		{%block content %}
-			<div id="login" class="container" align="center">
-			<div id="log-in-header"><h4 id="header-greeting">Welcome back to e-Asenso!</h4></div>
-			<input id="username" type="text" class="form-control" placeholder="username">
-			<input id="password" type="password" class="form-control" placeholder="password">
-			<button id="login-button" class="btn btn-primary">
-			<h4 id="login-button-font">LET'S SHOP!</H4></button>
-			<div id="forgot-pass"> <a href="#"><h4>Forgot Password?</h4></a></div>	
-		</div>
+			
 		{% endblock content %}
 	
-		{% block footer %}{% endblock footer %}
-	
+		{% block footer %}
+			<div class="footer" >  
+
+				 <div id="footer-logo" href="#" class="facebook"><span>Facebook</span></div>
+			     <div id="footer-logo" href="#" class="twitter"><span>Twitter</span></div>
+			     <div id="footer-logo" href="#" class="github"><span>GitHub</span></div>
+			     <div id="footer-logo" href="#" class="dribbble"><span>Dribbble</span></div>
+			     <div id="footer-logo" href="#" class="pinterest"><span>Pinterest</span></div> 
+			</div>
+		{% endblock footer %}
+
+		<script type="text/javascript" src="{{STATIC_URL}}js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="{{STATIC_URL}}js/bootstrap.js"></script>
 		<script type="text/javascript" src="{{STATIC_URL}}components/jquery/jquery.min.js"></script>
 		<script type="text/javascript" src="{{STATIC_URL}}components/jquery-ui/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="{{STATIC_URL}}components/bootstrap/js/bootstrap.min.js"></script>
 
 	{% block custom_scripts %}{% endblock custom_scripts %}
+
+
 	</body>
 </html>

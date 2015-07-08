@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ system_name }}  {% endblock title %}
+
+{% block id_body %} id="success-background" {% endblock id_body %}
+
+{% block content %}
+
+
+  <canvas id="canvas">	
+  </canvas>
+  <div id="confirm"><p>CONGRATULATIONS!
+  </p>
+  	<p>You are now completely registered to e-asenso!</p></div>
+  	<p></p>
+  	<h3 class="slogan" align="center" style="font-size: 26px; color: white; opacity: 0.7;">Sa e-asenso! Negosyo Mo, Asenso mo!</h3>
+
+{% endblock content %}
+
+{%block custom_scripts%}
+		
+		<script type="text/javascript" src="{{STATIC_URL}}js/success.js"></script>
+{%endblock custom_scripts%}

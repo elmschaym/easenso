@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ system_name }}  {% endblock title %}
+
+{% block id_body %} id="success-background" {% endblock id_body %}
+
+{% block content %}
+
+  <canvas id="canvas">	
+  </canvas>
+  <div id="confirm"><p>CONGRATULATIONS!
+  </p>
+  	<p>we are almost there!</p></div>
+  	<p></p>
+  	<h3 class="" align="center" style="color: white; opacity: 0.7;">Please go to your email and click CONFIRM to start using your account.</h3>
+
+
+
+{% endblock content %}
+
+{%block custom_scripts%}
+		
+		<script type="text/javascript" src="{{STATIC_URL}}js/success.js"></script>
+{%endblock custom_scripts%}

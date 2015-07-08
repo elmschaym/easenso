@@ -155,7 +155,7 @@ class SignupForm(forms.Form):
 			attrs = {
 				'class' : 'form-control',
 				'required'    : 'True',
-				'placeholder': 'Date of Birth (Year-month-day)',
+				'placeholder': 'Date of Birth (YYYY-MM-DD)',
 				'datepicker-popup': '{{format}}',
 				'ng-model' : 'dt',
 				'is-open'  : 'opened',
