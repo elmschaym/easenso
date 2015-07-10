@@ -45,27 +45,27 @@
   </div><!-- /.container-fluid -->
 </nav>
 </header>
-
+<div id="wrapper2">
 <div id="animation">
-		<div class="container1" align="right">APPAREL</div>
-		<div class="container1" align="right">SPORTS</div>
-		<div class="container1 "></div>
+		<div class="container1" align="right">FASHION</div>
+		<div class="container1" align="right">WELLNESS & BEAUTY</div>
+		<div class="container1 " align="right">WATCHES</div>
 		<div class="container1 " align="right">TECH</div>
-		<div class="container1 " align="right">SHOES</div>
-		<div class="container1 "></div>
-		<div class="container1 " align="right">ESTATES</div>
-		<div class="container1 "></div>
-		<div class="container1 " align="right">APPAREL</div>
-		<div class="container1 "></div>
-		<div class="container1 " align="right">APPAREL</div>
-		<div class="container1 "></div>
-		<div class="container1 " align="right">APPAREL</div>
-		<div class="container1 "></div>
-		<div class="container1 " align="right">APPAREL</div>
-		<div class="container1 "></div>
+		<div class="container1 " align="right">HOME APPLIANCES</div>
+		<div class="container1 " align="right">HOME & LIVING</div>
+		<div class="container1 " align="right">TOYS & KIDS</div>
+		<div class="container1 " align="right">SPORTS</div>
+		<div class="container1 " align="right">AUTOMOTIVES</div>
+		<div class="container1 " align="right">MOBILES & TABLETS</div>
+		<div class="container1 " align="right">TRAVEL</div>
+		<div class="container1 " align="right">LAPTOPS & COMPUTERS</div>
+		<div class="container1 " align="right">MEDIA</div>
+		<div class="container1 " align="right">CAMERAS</div>
+		<div class="container1 " align="right">JEWELRIES</div>
+		<div class="container1 " align="right">AND MORE!</div>
 
 	</div>
-<div id="wrapper2">
+
 
 	<div id="sign-up-container" class="container" align="center" 	>
 <div id="sign-up-logo"> </div>
@@ -89,9 +89,13 @@
 		</div>
 
 			{{ form.username }}
+			<div id="error">
+	  		</div>
 			{{ form.password }}
 			{{ form.confirm }}
 			{{ form.email }}
+			<div id="error_email">
+	  		</div>
 			<div ng-controller="BirthDateCtrl">
 				{{ form.date_of_birth }}
 			</div>
@@ -103,7 +107,7 @@
 			<!--enter captcha code here.
 			<input id="captchba" type="text" class="form-control" placeholder="Enter CODE"-->
 	
-			<button id="signup-button" class="btn btn-warning">
+			<button id="signup-button" disabled=""  class="btn btn-warning">
 				<h4 id="signup-button-header">SIGN ME UP!</H4></button>
 
 	</form>

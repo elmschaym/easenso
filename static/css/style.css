@@ -2,12 +2,28 @@
 @import url('bootstrap.css');
 
 
+
 #main-body
 {
-	background-color: #5AD6FC;
+	background-color: #F8F8F8;
     background-size: 100%;
-
+height: 50px;
+  
+   	
 }
+
+#main-body-intr0
+{
+	background-color: #F8F8F8;
+    background-size: 100%;
+height: 50px;
+  
+   	
+}
+
+
+
+
 
 #wrapper
 {
@@ -48,7 +64,7 @@
 #main
 {
 	width: 50%;
-	
+
 	
 	
 }
@@ -284,12 +300,14 @@ position: relative;
 	background-color: transparent;
 	width: 100%;
 	min-width: 100%;
-
+	
 }
 .navbar-default {
-    background-color: rgba(252, 252, 252, 0.65);
+    background-color: rgba(14, 156, 200, 0.68);
     border-color: rgba(230, 230, 230, 0);
     font-weight: bold;
+    border-radius: 0px;
+    max-width: 100%;
 }
 .navbar-form .form-control 
 {
@@ -336,7 +354,6 @@ font-family: gisha;
 
 
 
-
 #first-name, #middle-name, #last-name,
 #signup-username, #signup-password,
 #password-confirm, #email-address,
@@ -347,11 +364,11 @@ font-family: gisha;
 	border-color: transparent;
 	border-radius: 0px;
 	margin-bottom: 8px;
-	background-color: rgba(250, 250, 250, 0.5);
+	background-color: #B5E7F6;
 	color:#3B3B3B;
 	box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.3);
 	font-size: 18px;
-
+	
 
 
 }
@@ -378,22 +395,21 @@ font-family: gisha;
 
 
 
-#gender
-{
-	padding-left:10px;
-	padding-top: 6px;
-	font-weight: bolder;
-	margin-left: 0px;
-	background-color: rgba(0, 0, 300, 0.3);
-	border-radius: 0px;
-	margin-bottom: 8px;
-	width: 100%;
-	color:white;
-	box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.3);
-	height: 100%;
+#gender {
+    padding-left: 10px;
+    padding-top: 6px;
+    font-weight: bolder;
+    margin-left: 0px;
+    background-color: #0698C5;
+    border-radius: 0px;
+    margin-bottom: 8px;
+    width: 100%;
+    color: #FFF;
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.3);
+    height: 100%;
 }
 
- #id_captcha_1
+#id_captcha_1
  {
  	border-radius: 0px;
  	border-top-right-radius: 20px;
@@ -515,24 +531,16 @@ a.register:hover
 
 }
 
-.footer
-{
-
-	position: fixed;
-	
-	width: 100%;
-
-
-	bottom: 0px;
-
-	margin-top: 10%;
-	min-width: 500px;
-
-	text-align:right;
-	background-color: #D2D7D3;
-
-
-
+.footer {
+    position: fixed;
+    width: 100%;
+    max-width: 100%;
+    bottom: 0px;
+    margin-top: 10%;
+    min-width: 500px;
+    text-align: right;
+    background-color: rgb(250, 136, 0);
+    box-shadow: 0px 1px 5px 1px black;
 }
 
 @media (max-width: 767px) {
@@ -557,21 +565,16 @@ a.register:hover
 {
 	max-width: 100%;
 	min-width: 700px;
-	background-color: #5AD6FC;
-	margin-left: 50%;
+	background-color: transparent;
+	margin-left: 90%;
+	position: inherit;
 
 }
 
-#animation2
-{
-	width: 100%;
-	
-	background-color: #5AD6FC;
-	margin-left: 50%;
 
-}
 .container1{	
-
+min-width: 20px;
+min-height: 20px;
 width:150px;
 height:150px;
 background:#5AD6FC;
@@ -582,14 +585,14 @@ font-size:15px;
 padding:10px;
 float:left;
 margin:5px;
--webkit-transition:-webkit-transform 1s,opacity 1s,background 1s,width 1s,height 1s,font-size 1s;
+-webkit-transition:-webkit-transform 0.5s,opacity 0.5s,background 0.5s,width 0.5s,height 0.5s,font-size 0.5s;
 -webkit-border-radius:5px;
 -o-transition-property:width,height,-o-transform,background,font-size,opacity;
--o-transition-duration:1s,1s,1s,1s,1s,1s;
+-o-transition-duration:0.5s,0.5s,0.5s,0.5s,0.5s,0.5s;
 -moz-transition-property:width,height,-o-transform,background,font-size,opacity;
--moz-transition-duration:1s,1s,1s,1s,1s,1s;
+-moz-transition-duration:0.5s,0.5s,0.5s,0.5s,0.5s,0.5s;
 transition-property:width,height,transform,background,font-size,opacity;
-transition-duration:1s,1s,1s,1s,1s,1s;
+transition-duration:0.5s,0.5s,0.5s,0.5s,0.5s,0.5s;
 border-radius:5px;
 opacity:0.4;
 }
@@ -597,12 +600,12 @@ opacity:0.4;
 .container1:hover
 {
 
-border
+border:transparent;
 opacity:1;
 background:#FA8800;
 width:170px;
 height:170px;
-font-size:30px;
+font-size:22px;
 box-shadow: 0 1px 5px 0px grey;
 border-bottom: 5px solid white;
 
@@ -617,7 +620,7 @@ body {
   text-align:center;
 }
 #footer-logo {
-  background: #D2D7D3;
+  background:rgb(250, 136, 0);
   color:#222;
   display: inline-block;
   text-align:center;
@@ -631,22 +634,22 @@ body {
   transition: all .5s;
 }
 #footer-logo.facebook {
-  background: #D2D7D3 url(http://i.imgur.com/yflN00F.png) no-repeat center;
+  background: #FA8800 url(http://i.imgur.com/yflN00F.png) no-repeat center;
 }
 #footer-logo.twitter {
-  background: #D2D7D3 url(http://i.imgur.com/ewQqTB1.png) no-repeat center;
+  background: #FA8800 url(http://i.imgur.com/ewQqTB1.png) no-repeat center;
 }
-#footer-logo.github {
-  background: #D2D7D3 url(http://i.imgur.com/n3bmN8f.png) no-repeat center;
+#footer-logo.easenso {
+  background: #FA8800 url(http://i.imgur.com/Me38pcm.png) no-repeat center;
 }
-#footer-logo.dribbble {
-  background: #D2D7D3 url(http://i.imgur.com/8c5A1ay.png) no-repeat center;
+#footer-logo.tuko {
+  background: #FA8800 url(http://i.imgur.com/4nciAOf.png) no-repeat center;
 }
-#footer-logo.pinterest {
-  background: #D2D7D3 url(http://i.imgur.com/s8bNLol.png) no-repeat center;
+#footer-logo.topgroup {
+  background: #FA8800 url(http://i.imgur.com/MEQXs23.png) no-repeat center;
 }
 #footer-logo span {
-  background:#fff;
+  background:white;
   color:#222;
  font-size:14px;
   font-weight: bold;
@@ -699,31 +702,31 @@ body {
   color:#19B5FE;
   cursor: pointer;
 }
-#footer-logo.github:hover {
+#footer-logo.easenso:hover {
+  background-color: #FA8800;
+  color: #fff;
+  cursor: pointer;
+}
+#footer-logo.easenso span {
+  color:#FA8800;
+  cursor: pointer;
+}
+#footer-logo.tuko:hover {
   background-color: #000;
   color: #fff;
   cursor: pointer;
 }
-#footer-logo.github span {
+#footer-logo.tuko span {
   color:#000;
   cursor: pointer;
 }
-#footer-logo.dribbble:hover {
-  background-color: #F62459;
+#footer-logo.topgroup:hover {
+  background-color: #B69C3E;
   color: #fff;
   cursor: pointer;
 }
-#footer-logo.dribbble span {
-  color:#F62459;
-  cursor: pointer;
-}
-#footer-logo.pinterest:hover {
-  background-color: #F22613;
-  color: #fff;
-  cursor: pointer;
-}
-#footer-logo.pinterest span {
-  color:#F22613;
+#footer-logo.topgroup span {
+  color:#B69C3E;
   cursor: pointer;
 }
 

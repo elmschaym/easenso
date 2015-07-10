@@ -1,19 +1,25 @@
 {% extends 'base.html' %}
 
 {% block title %} {{ system_name }}  {% endblock title %}
-
-{% block id_body %} id="main-body" {% endblock id_body %}
+	
+{% block id_body %} id="main-body-intro" {% endblock id_body %}
 
 {% block content %}
-	<div id="wrapper">
+
 		<div id="main-logo" >
-			<div id="main" class="container-fluid" >
-				<div id="new" align="center">	
-					<a id="test" href="/registration" >
-						<h3> CLICK HERE FOR EARLY REGISTRATION! </h3>
-					</a>
-				</div>
+
+		<div id="main" class="container-fluid" ></div>
+			
+			<div id="new" align="center">	
+						<a id="test" href="/registration" >
+						
+							<h3> CLICK HERE FOR EARLY REGISTRATION!
+							</h3>
+					 
+						</a>
+
 			</div> 
-		</div>
-	</div>
+			
+			</div>	
+		
 {% endblock content %}

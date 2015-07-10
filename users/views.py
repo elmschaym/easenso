@@ -4,6 +4,7 @@ from django.views.decorators.http import require_POST
 from django.contrib.auth.hashers import make_password
 from users.models import User
 from django.core.mail import EmailMultiAlternatives
+import json
 
 SYSTEM_NAME = 'Easenso'
 
@@ -67,6 +68,45 @@ def signup(request):
 		return HttpResponse('Oops! sorry, something went wrong in the process.')
 
 	return HttpResponse('Oops! sorry, error 404')
+
+def check_username_db(request):
+	context = RequestContext(request)
+	username = request.GET.get('username')
+	print username
+	print User.objects.filter(username=username).exists()
+    
+	if username:
+		if User.objects.filter(username=username).exists():
+			print 'exits'
+			data ={ 'exist': True}
+			
+		else:
+			data ={ 'exist': False}
+	else:
+		data ={ 'exist': False}
+	
+	json_response = json.dumps(data)
+	return HttpResponse(json_response, content_type="application/json")
+
+
+def check_email_db(request):
+	context = RequestContext(request)
+	email = request.GET.get('email')
+	print email
+	print User.objects.filter(email=email).exists()
+    
+	if email:
+		if User.objects.filter(email=email).exists():
+			print 'exits'
+			data ={ 'exist': True}
+			
+		else:
+			data ={ 'exist': False}
+	else:
+		data ={ 'exist': False}
+	
+	json_response = json.dumps(data)
+	return HttpResponse(json_response, content_type="application/json")
 
 def confirm_email(request, email):
 	user = User.objects.get(email__iexact = email)

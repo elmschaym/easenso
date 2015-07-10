@@ -17,7 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
-from users.views import signup_view, signup, confirm_email
+from users.views import signup_view, signup, confirm_email,check_username_db,check_email_db
 from easenso.views import index
 from django.views.generic import TemplateView
 
@@ -26,6 +26,8 @@ urlpatterns = [
   url(r'^$', index),
   url(r'^signup/$', signup),
   url(r'^registration/$', signup_view),
+  url(r'^check_username_db?', check_username_db),
+  url(r'^check_email_db?', check_email_db),
   url(r'^registration/confirm_email/(?P<email>\w.+)/$', confirm_email),
   url(r'^admin/', include(admin.site.urls)),
   url(r'^captcha/', include('captcha.urls')),

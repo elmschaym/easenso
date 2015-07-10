@@ -88,6 +88,7 @@ class SignupForm(forms.Form):
 				'class'       : 'form-control',
 				'id'			    : 'signup-password',
 				'required'    : 'True',
+				'minlength'	: '6',
 			}
 		),
 	)
@@ -99,6 +100,7 @@ class SignupForm(forms.Form):
 				'class'       : 'form-control',
 				'id'			    : 'password-confirm',
 				'required'    : 'True',
+				'minlength'	: '6',
 			}
 		),
 	)
@@ -124,6 +126,7 @@ class SignupForm(forms.Form):
 				'class'       : 'form-control',
 				'id'			    : 'mobile-num',
 				'required'    : 'True',
+				'type'	: 'number',
 			}
 		),
 	)
