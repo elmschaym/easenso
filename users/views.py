@@ -11,7 +11,7 @@ SYSTEM_NAME = 'Easenso'
 def signup_view(request):
 	form    = forms.SignupForm()
 	captcha = forms.CaptchaTestForm()
-
+	print form
 	return render_to_response(
 		'includes/sign-up.html', 
 		{ 
@@ -24,7 +24,7 @@ def signup_view(request):
 
 @require_POST
 def signup(request):
-	try:
+	#try:
 		captcha = forms.CaptchaTestForm(request.POST)
 		form    = forms.SignupForm(request.POST)
 		
@@ -61,13 +61,55 @@ def signup(request):
 
 				return render_to_response('success/confirm.html', data,RequestContext(request),)
 			else:
+				print 'wee'
 				return HttpResponse('Oops! sorry, username already exists.')
 		else:
-			return HttpResponse('Oops! sorry, something went wrong. Please fill up the form with all your valid information.')
-	except:
-		return HttpResponse('Oops! sorry, something went wrong in the process.')
+			#form    = forms.SignupForm(request.POST)
+			
+				
+			print 'valid'
+			first_name     = form.cleaned_data['firstname']
+			print first_name , 'else'
+			middle_name    = form.cleaned_data['middlename']
+			last_name      = form.cleaned_data['lastname']
+			username       = form.cleaned_data['username']
+			gender         = [gender for gender in request.POST['gender[]']][0]
+			email          = form.cleaned_data['email']
+			password       = form.cleaned_data['password']
+			city        = form.cleaned_data['city']
+			province = form.cleaned_data['province']
+			contact_number = form.cleaned_data['mobile']
+			is_active      = True
+			date_of_birth  = form.cleaned_data['date_of_birth']
+			print date_of_birth
+			form    = forms.SignupForm(initial={
+				'firstname': first_name,
+				'username':username,
+				'lastname':last_name,
+				'middlename':middle_name,
+				'password':password,
+				'confirm':password,
+				'email':email,
+				'mobile':contact_number,
+				'city':city,
+				'province':province,
+				'date_of_birth':date_of_birth,
+				})
+			captcha = forms.CaptchaTestForm()
+			return render_to_response(
+				'includes/sign-up.html', 
+				{ 
+					'system_name' : SYSTEM_NAME + ' Sign-up',
+					'form'        : form,
+					'captcha'		  : captcha,
+				},
+				RequestContext(request),
+			)
 
-	return HttpResponse('Oops! sorry, error 404')
+	#except:
+	#	return HttpResponse('Oops! sorry, something went wrong in the process.')
+
+#	return HttpResponse('Oops! sorry, error 404')
 
 def check_username_db(request):
 	context = RequestContext(request)
