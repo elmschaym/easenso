@@ -37,13 +37,15 @@ ALLOWED_HOSTS = [ '127.0.0.1']
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'top.easenso@gmail.com'
-EMAIL_HOST_PASSWORD = 'saltopso24'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.SSLEmailBackend'
+EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtpout.secureserver.net'
+EMAIL_HOST_USER = 'support@easenso.ph'
+EMAIL_HOST_PASSWORD = 'Pass123Support'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL=True
 # Application definition
 SESSION_COOKIE_DOMAIN = 'localhost'
 
