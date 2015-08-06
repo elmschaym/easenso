@@ -3,6 +3,11 @@ from .models import User
 from captcha.fields import CaptchaField
 from functools import partial
 
+
+
+
+
+
 DateInput = partial(
 	forms.DateInput, 
 	{
@@ -16,6 +21,35 @@ class CaptchaTestForm(forms.Form):
     captcha = CaptchaField()
 
 class SignupForm(forms.Form):
+	security_questions = (
+		('first_kissed', 'What is the first name of the person you first kissed?'),
+		('failing_grade', 'What is the last name of the teacher who gave you your first failing grade?'),
+		('wedding_reception', 'What is the name of the place your wedding reception was held?'),
+		('primary_school', 'What was the name of your elementary / primary school?'),
+		('sibling_live', 'In what city or town does your nearest sibling live?'),
+		('time_born','What time of the day were you born? (hh:mm)'),
+		('pets_name','What is your pet'+"'"+'s name?'),
+		('father_born', 'In what year was your father born?'),
+		('favorite', 'What is your favorite _____?')
+	)
+	security_questions = forms.ChoiceField(choices = security_questions,
+                                   widget = forms.Select(attrs={
+                                       'class' : 'form-control',
+                                       'id'		: 'sec_quest'
+                                   })
+    )
+
+	security_answer = forms.CharField(
+		widget = forms.TextInput(
+			attrs = {
+				'placeholder' : 'Security Answer',
+				'class'       : 'form-control',
+				'id' 		 : 'sec_answer',
+				'required'    : 'True',
+				'maxlength'	: '100'
+			}
+		),
+	)
 
 	firstname = forms.CharField(
 		widget = forms.TextInput(
@@ -33,7 +67,7 @@ class SignupForm(forms.Form):
 			attrs = {
 				'placeholder' : 'Middle Name',
 				'class'       : 'form-control',
-				'id' 				  : 'middle-name',
+				'id' 		  : 'middle-name',
 				'required'    : 'True',
 			}
 		),
@@ -118,6 +152,8 @@ class SignupForm(forms.Form):
 			}
 		),
 	)
+
+	
 
 	mobile = forms.CharField(
 		widget = forms.TextInput(

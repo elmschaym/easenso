@@ -33,7 +33,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = [ 'https://www.easenso.ph/']
+ALLOWED_HOSTS = [ 'www.easenso.ph']
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
@@ -46,7 +46,7 @@ EMAIL_PORT = 465
 EMAIL_USE_SSL=True
 #EMAIL_USE_TLS = True
 # Application definition
-SESSION_COOKIE_DOMAIN = 'https://www.easenso.ph/'
+SESSION_COOKIE_DOMAIN = 'www.easenso.ph'
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -101,14 +101,26 @@ WSGI_APPLICATION = 'easenso.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE'   : 'django.db.backends.postgresql_psycopg2',
+#         'NAME'     : 'easenso_database',
+#         'USER'     : 'super',
+#         'PASSWORD' : 'DEVELOPERS',
+#         'HOST'     : 'theopenplangroup101-49.postgres.pythonanywhere-services.com',
+#         'PORT'     : '10049',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
         'ENGINE'   : 'django.db.backends.postgresql_psycopg2',
         'NAME'     : 'easenso_database',
-        'USER'     : 'super',
-        'PASSWORD' : 'DEVELOPERS',
-        'HOST'     : 'theopenplangroup101-49.postgres.pythonanywhere-services.com',
-        'PORT'     : '10049',
+        'USER'     : 'postgres',
+        'PASSWORD' : 'postgres',
+        'HOST'     : 'localhost',
+        'PORT'     : '5432',
     }
 }
 

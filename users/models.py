@@ -23,7 +23,7 @@ class User(AbstractUser):
     cover_photo          = models.FileField(upload_to ='user/cover_photo', null = True, blank = True)
     captcha              = models.CharField(max_length = 500)
     security_question    = models.CharField(max_length = 30)
-    security_answer      = models.CharField(max_length = 30)
+    security_answer      = models.CharField(max_length = 100)
     user_type_expiration = models.DateTimeField(null = True)
     user_type            = models.CharField(max_length = 1, choices = USER_TYPE)
     is_confirmed         = models.BooleanField(default = False)

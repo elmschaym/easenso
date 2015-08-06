@@ -354,7 +354,7 @@ font-family: gisha;
 
 
 
-#first-name, #middle-name, #last-name,
+#first-name, #middle-name, #last-name,#sec_quest,#sec_answer,
 #signup-username, #signup-password,
 #password-confirm, #email-address,
 #mobile-num, #city, #province, #captcha, #date_of_birth, #id_captcha_1
@@ -384,7 +384,9 @@ font-family: gisha;
 #city:focus,
 #province:focus,
 #captcha:focus,
-#date_of_birth:focus
+#date_of_birth:focus,
+#sec_answer:focus,
+#sec_quest:focus
 {
 	border-radius: 0px;
 	border-color: white;

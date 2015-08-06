@@ -35,6 +35,8 @@ def signup(request):
 					middle_name    = form.cleaned_data['middlename'],
 					last_name      = form.cleaned_data['lastname'],
 					username       = form.cleaned_data['username'],
+					security_question      = form.cleaned_data['security_questions'],
+					security_answer       = form.cleaned_data['security_answer'],
 					gender         = [gender for gender in request.POST['gender[]']][0],
 					email          = form.cleaned_data['email'],
 					password       = make_password(form.cleaned_data['password'], salt=None, hasher='default'),
