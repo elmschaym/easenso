@@ -1,3 +1,4 @@
+var is_agree=false;
 function checkPasswordMatch() {
     var password = $("#signup-password").val();
     var confirmPassword = $("#password-confirm").val();
@@ -30,7 +31,7 @@ $(document).ready(function () {
 
         var empty = false;
         $('form >  input').each(function() {
-            if ($(this).val() == '' || $('#description').val() == '') {
+            if ($(this).val() == '') {
                 empty = true;
             }
         });
@@ -41,7 +42,7 @@ $(document).ready(function () {
         });
 */
 
-
+  
 	var password = $("#signup-password").val();
     var confirmPassword = $("#password-confirm").val();
 
@@ -50,7 +51,7 @@ $(document).ready(function () {
          $('#signup-button').attr('disabled', 'disabled');
     	}
 
-	if (empty) {
+	if (empty || is_agree==false) {
             $('#signup-button').attr('disabled', 'disabled'); // updated according to http://stackoverflow.com/questions/7637790/how-to-remove-disabled-attribute-with-jquery-ie
         } else {
             $('#signup-button').removeAttr('disabled'); // updated according to http://stackoverflow.com/questions/7637790/how-to-remove-disabled-attribute-with-jquery-ie
@@ -84,7 +85,21 @@ $('#email-address').blur(function() {
 
 });
 
+function validate() {
+    if (document.getElementById('agree').checked) {
+         $('#signup-button').removeAttr('disabled');
+        is_agree=true;
+    } else {
+        $('#signup-button').attr('disabled', 'disabled');
+        is_agree=false;
+         
+    }
+}
+if(is_agree){
 
+}else{
+    $('#signup-button').attr('disabled', 'disabled');
+}
 function disable_field(field){
   $('#'+field+'').removeAttr('disabled');
    $('#'+field+'1').removeAttr('hidden');

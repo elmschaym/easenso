@@ -33,21 +33,20 @@ DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = [ '127.0.0.1']
+ALLOWED_HOSTS = [ 'https://www.easenso.ph/']
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
-#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#EMAIL_BACKEND = 'django.core.mail.backends.SSLEmailBackend'
+
 EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtpout.secureserver.net'
 EMAIL_HOST_USER = 'support@easenso.ph'
 EMAIL_HOST_PASSWORD = 'Pass123Support'
 EMAIL_PORT = 465
-EMAIL_USE_TLS = False
 EMAIL_USE_SSL=True
+#EMAIL_USE_TLS = True
 # Application definition
-SESSION_COOKIE_DOMAIN = 'localhost'
+SESSION_COOKIE_DOMAIN = 'https://www.easenso.ph/'
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -106,10 +105,10 @@ DATABASES = {
     'default': {
         'ENGINE'   : 'django.db.backends.postgresql_psycopg2',
         'NAME'     : 'easenso_database',
-        'USER'     : 'postgres',
-        'PASSWORD' : 'postgres',
-        'HOST'     : 'localhost',
-        'PORT'     : '5432',
+        'USER'     : 'super',
+        'PASSWORD' : 'DEVELOPERS',
+        'HOST'     : 'theopenplangroup101-49.postgres.pythonanywhere-services.com',
+        'PORT'     : '10049',
     }
 }
 

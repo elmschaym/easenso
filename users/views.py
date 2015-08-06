@@ -50,7 +50,7 @@ def signup(request):
 
 				subject, from_email, to_email = 'Easenso Account Validation', user.email, user.email
 				text_content = ''
-				html_content = "Hi %s,<br /> Thanks for signing up for Easenso!<br /> Please <a href='http://www.easenso.ph/registration/confirm_email/%s'>click this link</a> to confirm your email address. This means you will be able to reset your password if you forget it later, which is especially important if you have a paid account!<br /> If you can't click the link from your email program, please copy this URL and paste it into your web browser: <br /><br /> http://www.easenso.ph/registration/confirm_email/%s" % (user.first_name, user.email, user.email)
+				html_content = "Hi %s,<br /> Thanks for signing up for Easenso!<br /> Please <a href='http://www.easenso.ph/registration/confirm_email/%s'>click this link</a> to confirm your email address. This means you will be able to reset your password if you forget it later, <br /> If you can't click the link from your email program, please copy this URL and paste it into your web browser: <br /><br /> http://www.easenso.ph/registration/confirm_email/%s <br/><br/><br/><br/><br/>If you don't want to use easenso, just ignore this message <br/><br/> To Contact Us: <br/><br/> Email: support@easenso.ph <br/><br/> Thanks!" % (user.first_name, user.email, user.email)
 				message      = EmailMultiAlternatives(subject, text_content, from_email, [to_email])
 				message.attach_alternative(html_content, "text/html")
 				message.send()
@@ -164,3 +164,13 @@ def confirm_email(request, email):
 			'system_name' : 'You Have Already Confirm!',
 		}
 		return render_to_response('success/already.html', data,RequestContext(request),)
+
+def termsanduse(request):
+
+	return render_to_response(
+		'includes/termsanduse.html', 
+		{ 
+			'system_name' : SYSTEM_NAME + ' Term and Use',
+		},
+		RequestContext(request),
+	)
