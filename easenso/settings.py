@@ -29,7 +29,7 @@ MEDIA_PATH    = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = 'uh*2bl%q#94efo#5t&)xovu1a$d(k&9z$2w)(oftu8+rajsmov'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
@@ -45,7 +45,6 @@ EMAIL_HOST_PASSWORD = 'Pass123Support'
 EMAIL_PORT = 587
 # EMAIL_USE_SSL=True
 EMAIL_USE_TLS = True
-#EMAIL_USE_TLS = True
 # Application definition
 SESSION_COOKIE_DOMAIN = 'www.easenso.ph'
 
@@ -65,7 +64,7 @@ INSTALLED_APPS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'sslify.middleware.SSLifyMiddleware',
+    #'sslify.middleware.SSLifyMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -103,16 +102,28 @@ WSGI_APPLICATION = 'easenso.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE'   : 'django.db.backends.postgresql_psycopg2',
+#         'NAME'     : 'easenso_database',
+#         'USER'     : 'super',
+#         'PASSWORD' : 'DEVELOPERS',
+#         'HOST'     : 'theopenplangroup101-49.postgres.pythonanywhere-services.com',
+#         'PORT'     : '10049',
+#     }
+# }
+
+
 DATABASES = {
-     'default': {
-         'ENGINE'   : 'django.db.backends.postgresql_psycopg2',
-         'NAME'     : 'easenso_database',
-         'USER'     : 'super',
-         'PASSWORD' : 'DEVELOPERS',
-         'HOST'     : 'theopenplangroup101-49.postgres.pythonanywhere-services.com',
-         'PORT'     : '10049',
-     }
- }
+    'default': {
+        'ENGINE'   : 'django.db.backends.postgresql_psycopg2',
+        'NAME'     : 'easenso_database',
+        'USER'     : 'postgres',
+        'PASSWORD' : 'postgres',
+        'HOST'     : 'localhost',
+        'PORT'     : '5432',
+    }
+}
 
 
 # Internationalization

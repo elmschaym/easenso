@@ -13,6 +13,18 @@ class User(AbstractUser):
         ('P', 'Premium')
     ]
     
+    security_questions = (
+        ('first_kissed', 'What is the first name of the person you first kissed?'),
+        ('failing_grade', 'What is the last name of the teacher who gave you your first failing grade?'),
+        ('wedding_reception', 'What is the name of the place your wedding reception was held?'),
+        ('primary_school', 'What was the name of your elementary / primary school?'),
+        ('sibling_live', 'In what city or town does your nearest sibling live?'),
+        ('time_born','What time of the day were you born? (hh:mm)'),
+        ('pets_name','What is your pet'+"'"+'s name?'),
+        ('father_born', 'In what year was your father born?'),
+        ('favorite', 'What is your favorite _____?')
+    )
+
     middle_name          = models.CharField(max_length = 30)
     gender               = models.CharField(max_length = 1, choices = GENDER)
     date_of_birth        = models.DateField(null = True)
@@ -22,7 +34,7 @@ class User(AbstractUser):
     profile_background   = models.FileField(upload_to ='user/profile_background', null = True, blank = True)
     cover_photo          = models.FileField(upload_to ='user/cover_photo', null = True, blank = True)
     captcha              = models.CharField(max_length = 500)
-    security_question    = models.CharField(max_length = 30)
+    security_question    = models.CharField(max_length = 30, choices = security_questions)
     security_answer      = models.CharField(max_length = 100)
     user_type_expiration = models.DateTimeField(null = True)
     user_type            = models.CharField(max_length = 1, choices = USER_TYPE)
