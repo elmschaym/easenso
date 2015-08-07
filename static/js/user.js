@@ -64,10 +64,12 @@ $(document).ready(function () {
 $('#signup-username').blur(function() {
     $.get('/check_username_db',{username:$('#signup-username').val() },function(data){
         
-        if (data.exist){
+        if (data.exist == "exist"){
         	$('#error').html('<p class="alert alert-danger">Username is Already taken</p>');
-        }else{
+        }else if(data.exist == "available"){
         	$('#error').html('<p class="alert alert-success">Username is Available</p>');
+        }else if(data.exist == "s_character"){
+            $('#error').html('<p class="alert alert-warning">Your username contains special character, whitespace or Capital Letter</p>');
         }
     });
 

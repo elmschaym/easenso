@@ -5,13 +5,14 @@ from django.contrib.auth.hashers import make_password
 from users.models import User
 from django.core.mail import EmailMultiAlternatives
 import json
+import re
 
 SYSTEM_NAME = 'Easenso'
 
 def signup_view(request):
 	form    = forms.SignupForm()
 	captcha = forms.CaptchaTestForm()
-	print form
+	
 	return render_to_response(
 		'includes/sign-up.html', 
 		{ 
@@ -29,7 +30,8 @@ def signup(request):
 		form    = forms.SignupForm(request.POST)
 		
 		if form.is_valid() and captcha.is_valid():
-			if form.cleaned_data['password'] == form.cleaned_data['confirm'] and not User.objects.filter(email__iexact = form.cleaned_data['username']).exists():
+			
+			if form.cleaned_data['password'] == form.cleaned_data['confirm'] and not User.objects.filter(email__iexact = form.cleaned_data['username']).exists() and is_characters(form.cleaned_data['username']):
 				user = User(
 					first_name     = form.cleaned_data['firstname'],
 					middle_name    = form.cleaned_data['middlename'],
@@ -52,10 +54,13 @@ def signup(request):
 
 				subject, from_email, to_email = 'Easenso Account Validation', user.email, user.email
 				text_content = ''
-				html_content = "Hi %s,<br /> Thanks for signing up for Easenso!<br /> Please <a href='http://www.easenso.ph/registration/confirm_email/%s'>click this link</a> to confirm your email address. This means you will be able to reset your password if you forget it later, <br /> If you can't click the link from your email program, please copy this URL and paste it into your web browser: <br /><br /> http://www.easenso.ph/registration/confirm_email/%s <br/><br/><br/><br/><br/>If you don't want to use easenso, just ignore this message <br/><br/> To Contact Us: <br/><br/> Email: support@easenso.ph <br/><br/> Thanks!" % (user.first_name, user.email, user.email)
+				html_content = "Hi %s,<br /> Thanks for signing up for Easenso!<br /> Please <a href='https://www.easenso.ph/registration/confirm_email/%s'>click this link</a> to confirm your email address. This means you will be able to reset your password if you forget it later, <br /> If you can't click the link from your email program, please copy this URL and paste it into your web browser: <br /><br /> http://www.easenso.ph/registration/confirm_email/%s <br/><br/><br/><br/><br/>If you don't want to use easenso, just ignore this message <br/><br/> To Contact Us: <br/><br/> Email: support@easenso.ph <br/><br/> Thanks!" % (user.first_name, user.email, user.email)
 				message      = EmailMultiAlternatives(subject, text_content, from_email, [to_email])
 				message.attach_alternative(html_content, "text/html")
 				message.send()
+
+
+				
 
 				data={
 					'system_name' : 'One More Step!',
@@ -63,15 +68,44 @@ def signup(request):
 
 				return render_to_response('success/confirm.html', data,RequestContext(request),)
 			else:
-				print 'wee'
-				return HttpResponse('Oops! sorry, username already exists.')
+				first_name     = form.cleaned_data['firstname']
+				middle_name    = form.cleaned_data['middlename']
+				last_name      = form.cleaned_data['lastname']
+				username       = form.cleaned_data['username']
+				gender         = [gender for gender in request.POST['gender[]']][0]
+				email          = form.cleaned_data['email']
+				password       = form.cleaned_data['password']
+				city        = form.cleaned_data['city']
+				province = form.cleaned_data['province']
+				contact_number = form.cleaned_data['mobile']
+				is_active      = True
+				date_of_birth  = form.cleaned_data['date_of_birth']
+				form    = forms.SignupForm(initial={
+					'firstname': first_name,
+					'username':username,
+					'lastname':last_name,
+					'middlename':middle_name,
+					'password':password,
+					'confirm':password,
+					'email':email,
+					'mobile':contact_number,
+					'city':city,
+					'province':province,
+					'date_of_birth':date_of_birth,
+					})
+				captcha = forms.CaptchaTestForm()
+				return render_to_response(
+					'includes/sign-up.html', 
+					{ 
+						'system_name' : SYSTEM_NAME + ' Sign-up',
+						'form'        : form,
+						'captcha'		  : captcha,
+					},
+					RequestContext(request),
+				)
 		else:
-			#form    = forms.SignupForm(request.POST)
 			
-				
-			print 'valid'
 			first_name     = form.cleaned_data['firstname']
-			print first_name , 'else'
 			middle_name    = form.cleaned_data['middlename']
 			last_name      = form.cleaned_data['lastname']
 			username       = form.cleaned_data['username']
@@ -116,23 +150,25 @@ def signup(request):
 def check_username_db(request):
 	context = RequestContext(request)
 	username = request.GET.get('username')
-	print username
-	print User.objects.filter(username=username).exists()
-    
-	if username:
+	if is_characters(username):
+			
 		if User.objects.filter(username=username).exists():
-			print 'exits'
-			data ={ 'exist': True}
+			
+			data ={ 'exist': 'exist'}
 			
 		else:
-			data ={ 'exist': False}
+			data ={ 'exist': 'available'}
 	else:
-		data ={ 'exist': False}
+			data ={ 'exist': 's_character'}
 	
 	json_response = json.dumps(data)
 	return HttpResponse(json_response, content_type="application/json")
 
-
+def is_characters(s):
+        if re.match("^[a-z0-9]*$", s):
+           	return True
+        else:
+            return False
 def check_email_db(request):
 	context = RequestContext(request)
 	email = request.GET.get('email')
