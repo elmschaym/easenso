@@ -6,23 +6,25 @@ function checkPasswordMatch() {
     if (password != confirmPassword ){
         //alert('notmatch');
          $('#signup-button').attr('disabled', 'disabled');
-         document.getElementById("password-confirm").setAttribute("style", "background-color: red;");
-         document.getElementById("signup-password").setAttribute("style", "background-color: red;");
+         document.getElementById("password-confirm").setAttribute("style", "background-color: rgba(250, 20, 0, 0.5);");
+         document.getElementById("signup-password").setAttribute("style", "background-color: rgba(250, 20, 0, 0.5);");
+
     	//$("#signup-password").setAttribute("class", "password-confirm-error");
     }else {
-         document.getElementById("password-confirm").setAttribute("style", "background-color: rgba(250, 250, 250, 0.5);");
-         document.getElementById("signup-password").setAttribute("style", "background-color: rgba(250, 250, 250, 0.5);");
-    	 
+         document.getElementById("password-confirm").setAttribute("style", "background-color: rgb(181, 231, 246);");
+         document.getElementById("signup-password").setAttribute("style", "background-color: rgb(181, 231, 246);");
+
     }
     if (password == '' && confirmPassword==''){
-         document.getElementById("password-confirm").setAttribute("style", "background-color: rgba(250, 250, 250, 0.5);");
-         document.getElementById("signup-password").setAttribute("style", "background-color: rgba(250, 250, 250, 0.5);");
-    	 
+         document.getElementById("password-confirm").setAttribute("style", "background-color: rgb(181, 231, 246);");
+         document.getElementById("signup-password").setAttribute("style", "background-color: rgb(181, 231, 246);");
+
+
     }
 }
 
 $(document).ready(function () {
-	
+
    $("#password-confirm").keyup(checkPasswordMatch);
 });
 
@@ -42,12 +44,12 @@ $(document).ready(function () {
         });
 */
 
-  
+
 	var password = $("#signup-password").val();
     var confirmPassword = $("#password-confirm").val();
 
  		if (password == '' || confirmPassword==''){
-        
+
          $('#signup-button').attr('disabled', 'disabled');
     	}
 
@@ -63,13 +65,13 @@ $(document).ready(function () {
 
 $('#signup-username').blur(function() {
     $.get('/check_username_db',{username:$('#signup-username').val() },function(data){
-        
+
         if (data.exist == "exist"){
         	$('#error').html('<p class="alert alert-danger">Username is Already taken</p>');
         }else if(data.exist == "available"){
         	$('#error').html('<p class="alert alert-success">Username is Available</p>');
         }else if(data.exist == "s_character"){
-            $('#error').html('<p class="alert alert-warning">Your username contains special character, whitespace or Capital Letter</p>');
+            $('#error').html('<p class="alert alert-warning">Your username should not contain special characters, space or Capital Letter</p>');
         }
     });
 
@@ -77,12 +79,13 @@ $('#signup-username').blur(function() {
 
 $('#email-address').blur(function() {
     $.get('/check_email_db',{email:$('#email-address').val() },function(data){
-        
-        if (data.exist){
+
+        if (data.exist=="exists"){
         	$('#error_email').html('<p class="alert alert-danger">Email is Already taken</p>');
-        }else{
+        }else if (data.exist=="not"){
         	$('#error_email').html('<p class="alert alert-success">Email is Available</p>');
         }
+
     });
 
 });
@@ -94,7 +97,7 @@ function validate() {
     } else {
         $('#signup-button').attr('disabled', 'disabled');
         is_agree=false;
-         
+
     }
 }
 if(is_agree){

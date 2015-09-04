@@ -30,6 +30,6 @@ urlpatterns = [
   url(r'^check_username_db?', check_username_db),
   url(r'^check_email_db?', check_email_db),
   url(r'^registration/confirm_email/(?P<email>\w.+)/$', confirm_email),
-  url(r'^admin/', include(admin.site.urls)),
+  url(r'^admin_easenso/', include(admin.site.urls)),
   url(r'^captcha/', include('captcha.urls')),
 ]

@@ -12,10 +12,10 @@ SYSTEM_NAME = 'Easenso'
 def signup_view(request):
 	form    = forms.SignupForm()
 	captcha = forms.CaptchaTestForm()
-	
+
 	return render_to_response(
-		'includes/sign-up.html', 
-		{ 
+		'includes/sign-up.html',
+		{
 			'system_name' : SYSTEM_NAME + ' Sign-up',
 			'form'        : form,
 			'captcha'		  : captcha,
@@ -28,9 +28,9 @@ def signup(request):
 	#try:
 		captcha = forms.CaptchaTestForm(request.POST)
 		form    = forms.SignupForm(request.POST)
-		
+
 		if form.is_valid() and captcha.is_valid():
-			
+
 			if form.cleaned_data['password'] == form.cleaned_data['confirm'] and not User.objects.filter(email__iexact = form.cleaned_data['username']).exists() and is_characters(form.cleaned_data['username']):
 				user = User(
 					first_name     = form.cleaned_data['firstname'],
@@ -60,7 +60,7 @@ def signup(request):
 				message.send()
 
 
-				
+
 
 				data={
 					'system_name' : 'One More Step!',
@@ -95,8 +95,8 @@ def signup(request):
 					})
 				captcha = forms.CaptchaTestForm()
 				return render_to_response(
-					'includes/sign-up.html', 
-					{ 
+					'includes/sign-up.html',
+					{
 						'system_name' : SYSTEM_NAME + ' Sign-up',
 						'form'        : form,
 						'captcha'		  : captcha,
@@ -104,7 +104,7 @@ def signup(request):
 					RequestContext(request),
 				)
 		else:
-			
+
 			first_name     = form.cleaned_data['firstname']
 			middle_name    = form.cleaned_data['middlename']
 			last_name      = form.cleaned_data['lastname']
@@ -115,7 +115,7 @@ def signup(request):
 			city        = form.cleaned_data['city']
 			province = form.cleaned_data['province']
 			contact_number = form.cleaned_data['mobile']
-			is_active      = True
+
 			date_of_birth  = form.cleaned_data['date_of_birth']
 			print date_of_birth
 			form    = forms.SignupForm(initial={
@@ -133,8 +133,8 @@ def signup(request):
 				})
 			captcha = forms.CaptchaTestForm()
 			return render_to_response(
-				'includes/sign-up.html', 
-				{ 
+				'includes/sign-up.html',
+				{
 					'system_name' : SYSTEM_NAME + ' Sign-up',
 					'form'        : form,
 					'captcha'		  : captcha,
@@ -148,19 +148,21 @@ def signup(request):
 #	return HttpResponse('Oops! sorry, error 404')
 
 def check_username_db(request):
-	context = RequestContext(request)
+
 	username = request.GET.get('username')
 	if is_characters(username):
-			
+
 		if User.objects.filter(username=username).exists():
-			
+
 			data ={ 'exist': 'exist'}
-			
+		elif username=="":
+			data ={ 'exist': 'empty'}
 		else:
 			data ={ 'exist': 'available'}
 	else:
 			data ={ 'exist': 's_character'}
-	
+
+
 	json_response = json.dumps(data)
 	return HttpResponse(json_response, content_type="application/json")
 
@@ -170,21 +172,21 @@ def is_characters(s):
         else:
             return False
 def check_email_db(request):
-	context = RequestContext(request)
+
 	email = request.GET.get('email')
-	print email
-	print User.objects.filter(email=email).exists()
-    
-	if email:
-		if User.objects.filter(email=email).exists():
-			print 'exits'
-			data ={ 'exist': True}
-			
-		else:
-			data ={ 'exist': False}
+	if email=="":
+		data ={ 'exist': 'none'}
 	else:
-		data ={ 'exist': False}
-	
+		if email:
+			if User.objects.filter(email=email).exists():
+				data ={ 'exist': 'exists'}
+
+			else:
+				data ={ 'exist': 'not'}
+		else:
+			data ={ 'exist': 'not'}
+
+
 	json_response = json.dumps(data)
 	return HttpResponse(json_response, content_type="application/json")
 
@@ -206,8 +208,8 @@ def confirm_email(request, email):
 def termsanduse(request):
 
 	return render_to_response(
-		'includes/termsanduse.html', 
-		{ 
+		'includes/termsanduse.html',
+		{
 			'system_name' : SYSTEM_NAME + ' Term and Use',
 		},
 		RequestContext(request),

@@ -13,7 +13,7 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
-       
+
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#"></a>
@@ -21,7 +21,7 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-     
+
       <form class="navbar-form navbar-left" role="search">
         <div  class="form-group">
           <input type="text" class="form-control" placeholder="Search">
@@ -29,7 +29,7 @@
         <button id="search-btn-header" type="submit" class="btn btn-primary">Find it!</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Log-in</a></li>
+     <!--    <li><a href="#">Log-in</a></li>
         <li class="dropdown dropdown-right">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -39,7 +39,7 @@
             <li class="divider"></li>
             <li><a href="#">Separated link</a></li>
           </ul>
-        </li>
+        </li> -->
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -69,17 +69,17 @@
 
 	<div id="sign-up-container" class="container" align="center" 	>
 <div id="sign-up-logo"> </div>
-		
+
 		<div id="signup-header" class="panel panel-warning"> Sign-up to e-asenso!</div>
 <form class="form-horizontal" id="register_user" action="/signup/" method="POST" enctype="multipart/form-data">
 		{% csrf_token %}
-		
+
 
 		{{ form.firstname }}
 		{{ form.middlename }}
 		{{ form.lastname }}
 
-		<div id="gender" class="container" align="left">	
+		<div id="gender" class="container" align="left">
 			<label id="male" class="radio-inline">
 			  <input type="radio" name="gender[]" id="inlineRadio1" value="M" checked> <p style=" font-family: gisha; letter-spacing: 1px; "> Male</p>
 			</label>
@@ -107,14 +107,14 @@
 			{{ captcha.captcha }}
 			<br/><br/>
 			<span>
-				<input onclick="javascript:validate();" id="agree" type="checkbox" value="" name="agree"/>  * I agree to the easenso.ph <a target="_blank" href="/termsanduse/"> Terms of Use. </a>	
+				<input onclick="javascript:validate();" id="agree" type="checkbox" value="" name="agree"/>  * I agree to the easenso.ph <a target="_blank" href="/termsanduse/"> Terms of Use. </a>
 			</span>
 			<br/>
 			<br/>
 			<!--ente
 			<!--enter captcha code here.
 			<input id="captchba" type="text" class="form-control" placeholder="Enter CODE"-->
-	
+
 			<button id="signup-button" disabled=""  class="btn btn-warning">
 				<h4 id="signup-button-header">SIGN ME UP!</H4></button>
 
@@ -128,11 +128,11 @@
 <!--footer id="footer">Powered By T.O.P. Company & Developed By Tuko Web and IT Solutions</footer-->
 {% endblock content %}
 {%block custom_scripts%}
-		
+
 		<script type="text/javascript" src="{{STATIC_URL}}components/angular/angular.min.js"></script>
 		<script type="text/javascript" src="{{STATIC_URL}}components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 		<script type="text/javascript" src="{{STATIC_URL}}angular-app/app.js"></script>
 
-		
+
 		<script type="text/javascript" src="/static/angular-app/controllers/easenso_ctrl.js"></script>
 {%endblock custom_scripts%}
