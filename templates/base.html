@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html ng-app="app" lang="en">
   <head>
-  	
+
    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,35 +15,36 @@
 	  	<link rel="stylesheet" href="{% static 'css/style.css' %}" >
 	  {% endblock css %}
     <title>{% block title %} {{ system_name }}Easenso {% endblock title %}</title>
-    
-	
-		
-		
-    
+
+
+
+
+
     {% block extra_css %}{% endblock extra_css %}
 
-		
+
   </head>
-  	
+
   	<div id="wrapper">
 	<body {% block id_body %}{% endblock id_body %}>
-		
+
 		{% block header %}{% endblock header %}
-	
-	
+
+
 		{%block content %}
-			
+
 		{% endblock content %}
-	
+
 		{% block footer %}
-			<div class="footer" >  
+			<div class="footer" >
 
 				 <a target="_blank" href="https://www.facebook.com"> <div id="footer-logo" href="#" class="facebook"><span> Facebook </span></div></a>
 			     <a target="_blank" href="https://twitter.com"><div id="footer-logo" href="#" class="twitter"><span>Twitter</span></div></a>
 			     <a target="_blank" href="https://www.easenso.ph"> <div id="footer-logo" href="#" class="easenso"><span>e-Asenso</span></div></a>
 			     <a target="_blank" href="https://www.facebook.com/tukowebdev"><div id="footer-logo" href="#" class="tuko"><span>Tuko DEVS</span></div></a>
-			     <div id="footer-logo" href="#" class="topgroup"><span>T.O.P</span></div> 
-			     
+			     <div id="footer-logo" href="#" class="topgroup"><span>T.O.P</span></div>
+			     <span style=" height:28px;  margin:0 2px;  padding-top:12px;" id="siteseal"><script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=NvGsrP0evoo0dRPEsrm1tnlHKJcLoVf502JS1DLmvIWJhfzLabGRqRlsMH9Z"></script></span>
+
 			</div>
 		{% endblock footer %}
 
